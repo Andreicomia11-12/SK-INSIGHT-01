@@ -1,0 +1,86 @@
+/* src/css/ProfilingPage.css */
+.profiling-page {
+    width: 100vw;
+    padding: 1rem;
+}
+
+.profiling-container {
+    max-width: 800px;
+    margin: 2rem auto 1rem;
+    padding: 1.5rem;
+    background: #f9fbfc;
+    border-radius: 10px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+.profiling-container h2 {
+    text-align: center;
+    color: #183a6b;
+    margin-bottom: 1rem;
+    font-size: 1.4rem;
+}
+
+.profiling-form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem 1rem;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group.full-width {
+    grid-column: span 2;
+}
+
+label {
+    font-size: 0.85rem;
+    margin-bottom: 0.2rem;
+    color: #444;
+}
+
+input,
+select {
+    border: none;
+    border-bottom: 2px solid #ccc;
+    padding: 0.4rem 0.3rem;
+    font-size: 0.95rem;
+    background: transparent;
+    outline: none;
+    transition: border-color 0.2s ease;
+    color: #000;
+}
+
+input:focus,
+select:focus {
+    border-color: #183a6b;
+}
+
+button[type="submit"] {
+    width: 100%;
+    padding: 0.6rem;
+    background: #183a6b;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+button[type="submit"]:hover {
+    background: #1452a3;
+}
+
+/* Mobile layout */
+@media (max-width: 768px) {
+    .profiling-form {
+        grid-template-columns: 1fr;
+    }
+
+    .form-group.full-width {
+        grid-column: 1;
+    }
+}
