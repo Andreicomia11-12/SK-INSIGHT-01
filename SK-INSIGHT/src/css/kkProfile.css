@@ -1,0 +1,158 @@
+.table-container {
+  background: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+  overflow-x: auto;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 1rem;
+}
+
+.table thead th {
+  background-color: transparent;
+  color: inherit;
+  border-bottom: 1px solid #e0e0e0;
+  padding: 12px 15px;
+  text-align: left;
+}
+
+.table th,
+.table td {
+  border: none;
+  border-bottom: 1px solid #e0e0e0;
+  padding: 12px 15px;
+  text-align: left;
+}
+
+.table tbody tr:last-child td,
+.table tbody tr:last-child th {
+    border-bottom: none;
+}
+
+.table-hover tbody tr:hover {
+  background-color: transparent;
+}
+
+.table-striped tbody tr:nth-child(even) {
+  background-color: transparent;
+}
+
+.table th:first-child,
+.table td:first-child {
+  padding-left: 15px;
+}
+
+.table th:last-child,
+.table td:last-child {
+  padding-right: 15px;
+}
+
+.act{
+  text-align: left;
+}
+
+.table td {
+    color: #333;
+}
+
+.table th {
+    font-weight: bold;
+    color: #000;
+}
+
+.input-group{
+  width: 300px;
+  height: 20px;
+}
+
+.form-control{
+  height: 50vh;
+}
+
+.form-select{
+  width: 300px;
+  height: 40px;
+  text-align: center;
+  padding-right: 20px;
+}
+
+.filt .form-select{
+  margin-left: 12vh;
+  width: 200px;
+  text-align: center;
+}
+
+.group .form-select{
+  width: 200px;
+  text-align: center;
+}
+
+.filt{
+  margin-left: 40vh;
+
+}
+
+.group{
+  margin-left: 1vh;
+}
+
+.btn{
+  margin-left: 2vh;
+  border: 1px solid #000;
+  width: 200px;
+}
+
+/* Basic Pagination Styles */
+.pagination {
+  display: flex;
+  padding-left: 0;
+  list-style: none;
+  border-radius: .25rem;
+}
+
+.page-item:first-child .page-link {
+  border-top-left-radius: .25rem;
+  border-bottom-left-radius: .25rem;
+}
+
+.page-item:last-child .page-link {
+  border-top-right-radius: .25rem;
+  border-bottom-right-radius: .25rem;
+}
+
+.page-item.active .page-link {
+  z-index: 3;
+  color: #fff;
+  background-color: #007bff;
+  border-color: #007bff;
+}
+
+.page-item.disabled .page-link {
+  color: #6c757d;
+  pointer-events: none;
+  background-color: #fff;
+  border-color: #dee2e6;
+}
+
+.page-link {
+  position: relative;
+  display: block;
+  padding: .5rem .75rem;
+  margin-left: -1px;
+  line-height: 1.25;
+  color: #007bff;
+  background-color: #fff;
+  border: 1px solid #dee2e6;
+}
+
+.page-link:hover {
+  z-index: 2;
+  color: #0056b3;
+  text-decoration: none;
+  background-color: #e9ecef;
+  border-color: #dee2e6;
+} 
