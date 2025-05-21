@@ -1,209 +1,49 @@
-import { useState } from "react";
+import React, { useState, useEffect } from 'react';
+import { FaUser, FaBell, FaBars, FaTimes } from 'react-icons/fa';
+import SKlogo from '../assets/logo.png';
+import '../css/Navbar.css';
+import { Link } from 'react-router-dom';
+
 
 const Navbar = () => {
-    const [isDropdownOpen, setDropdownOpen] = useState(false);
-    const [isSubDropdownOpen, setSubDropdownOpen] = useState(false);
-    const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
+    const [menuOpen, setMenuOpen] = useState(false);
+
+    // Auto-close menu on window resize
+    useEffect(() => {
+        const handleResize = () => {
+            if (window.innerWidth > 900) {
+                setMenuOpen(false);
+            }
+        };
+        window.addEventListener('resize', handleResize);
+        return () => window.removeEventListener('resize', handleResize);
+    }, []);
 
     return (
-        <nav className="bg-white border-gray-200 dark:bg-gray-900 dark:border-gray-700">
-            <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-                <a href="#" className="flex items-center space-x-3 rtl:space-x-reverse">
-                    <img
-                        src="https://flowbite.com/docs/images/logo.svg"
-                        className="h-8"
-                        alt="Flowbite Logo"
-                    />
-                    <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">
-                        SK-INSIGHT
-                    </span>
-                </a>
+        <nav className="navbar">
 
-                {/* Mobile Menu Button */}
-                <button
-                    onClick={() => setMobileMenuOpen(!isMobileMenuOpen)}
-                    type="button"
-                    className="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
-                    aria-controls="navbar-multi-level"
-                    aria-expanded={isMobileMenuOpen}
-                >
-                    <span className="sr-only">Open main menu</span>
-                    <svg
-                        className="w-5 h-5"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 17 14"
-                        xmlns="http://www.w3.org/2000/svg"
-                    >
-                        <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth={2}
-                            d="M1 1h15M1 7h15M1 13h15"
-                        />
-                    </svg>
-                </button>
+            <div className="navbar-left">
+                <img src={SKlogo} alt="SK Logo" className="navbar-logo" />
+                <span className="navbar-title">SK-INSIGHT</span>
+            </div>
 
-                {/* Navigation Menu */}
-                <div
-                    className={`${isMobileMenuOpen ? "block" : "hidden"} w-full md:block md:w-auto`}
-                    id="navbar-multi-level"
-                >
-                    <ul className="flex flex-col font-medium p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
-                        <li>
-                            <a
-                                href="#"
-                                className="block py-2 px-3 text-white bg-[#183a6b] rounded-sm md:bg-transparent md:text-[#183a6b] md:p-0 md:dark:text-blue-500 dark:bg-blue-600 md:dark:bg-transparent"
-                            >
-                                Home
-                            </a>
-                        </li>
-
-                        {/* Dropdown */}
-                        <li className="relative">
-                            <button
-                                onClick={() => setDropdownOpen(!isDropdownOpen)}
-                                className="flex items-center justify-between w-full py-2 px-3 text-gray-900 hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-[#183a6b] md:p-0 md:w-auto dark:text-white md:dark:hover:text-blue-500 dark:focus:text-white dark:hover:bg-gray-700 md:dark:hover:bg-transparent"
-                            >
-                                Dropdown
-                                <svg
-                                    className="w-2.5 h-2.5 ms-2.5"
-                                    fill="none"
-                                    viewBox="0 0 10 6"
-                                    xmlns="http://www.w3.org/2000/svg"
-                                >
-                                    <path
-                                        stroke="currentColor"
-                                        strokeLinecap="round"
-                                        strokeLinejoin="round"
-                                        strokeWidth={2}
-                                        d="m1 1 4 4 4-4"
-                                    />
-                                </svg>
-                            </button>
-
-                            {/* Dropdown Menu */}
-                            {isDropdownOpen && (
-                                <div className="absolute z-10 mt-2 w-44 bg-white rounded-lg shadow-sm dark:bg-gray-700">
-                                    <ul className="py-2 text-sm text-gray-700 dark:text-gray-200">
-                                        <li>
-                                            <a
-                                                href="#"
-                                                className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                                            >
-                                                Dashboard
-                                            </a>
-                                        </li>
-                                        <li>
-                                            {/* Sub-dropdown */}
-                                            <div>
-                                                <button
-                                                    onClick={() => setSubDropdownOpen(!isSubDropdownOpen)}
-                                                    className="flex items-center justify-between w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                                                >
-                                                    Dropdown
-                                                    <svg
-                                                        className="w-2.5 h-2.5 ms-2.5"
-                                                        fill="none"
-                                                        viewBox="0 0 10 6"
-                                                        xmlns="http://www.w3.org/2000/svg"
-                                                    >
-                                                        <path
-                                                            stroke="currentColor"
-                                                            strokeLinecap="round"
-                                                            strokeLinejoin="round"
-                                                            strokeWidth={2}
-                                                            d="m1 1 4 4 4-4"
-                                                        />
-                                                    </svg>
-                                                </button>
-                                                {isSubDropdownOpen && (
-                                                    <div className="absolute left-full top-0 ml-1 mt-0 w-44 bg-white rounded-lg shadow-sm dark:bg-gray-700">
-                                                        <ul className="py-2 text-sm text-gray-700 dark:text-gray-200">
-                                                            <li>
-                                                                <a
-                                                                    href="#"
-                                                                    className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                                                                >
-                                                                    Overview
-                                                                </a>
-                                                            </li>
-                                                            <li>
-                                                                <a
-                                                                    href="#"
-                                                                    className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                                                                >
-                                                                    My downloads
-                                                                </a>
-                                                            </li>
-                                                            <li>
-                                                                <a
-                                                                    href="#"
-                                                                    className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                                                                >
-                                                                    Billing
-                                                                </a>
-                                                            </li>
-                                                            <li>
-                                                                <a
-                                                                    href="#"
-                                                                    className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                                                                >
-                                                                    Rewards
-                                                                </a>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                )}
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <a
-                                                href="#"
-                                                className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                                            >
-                                                Earnings
-                                            </a>
-                                        </li>
-                                    </ul>
-                                    <div className="py-1">
-                                        <a
-                                            href="#"
-                                            className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
-                                        >
-                                            Sign out
-                                        </a>
-                                    </div>
-                                </div>
-                            )}
-                        </li>
-
-                        <li>
-                            <a
-                                href="#"
-                                className="block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-[#183a6b] md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
-                            >
-                                Services
-                            </a>
-                        </li>
-                        <li>
-                            <a
-                                href="#"
-                                className="block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-[#183a6b] md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
-                            >
-                                Pricing
-                            </a>
-                        </li>
-                        <li>
-                            <a
-                                href="#"
-                                className="block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-[#183a6b] md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
-                            >
-                                Contact
-                            </a>
-                        </li>
-                    </ul>
+            {/* Center: Hamburger & Links */}
+            <div className="navbar-center">
+                <div className="navbar-hamburger" onClick={() => setMenuOpen(prev => !prev)}>
+                    {menuOpen ? <FaTimes /> : <FaBars />}
                 </div>
+                <ul className={`navbar-links ${menuOpen ? 'open' : ''}`}>
+                    <li onClick={() => setMenuOpen(false)}><Link to="/home">Home</Link></li>
+                    <li onClick={() => setMenuOpen(false)}><Link to="/profiling">Profiling</Link></li>
+                    <li onClick={() => setMenuOpen(false)}><Link to="/assistance">Assistance</Link></li>
+                </ul>
+
+            </div>
+
+            {/* Right: Icons */}
+            <div className="navbar-icons">
+                <FaUser className="navbar-icon" />
+                <FaBell className="navbar-icon" />
             </div>
         </nav>
     );
