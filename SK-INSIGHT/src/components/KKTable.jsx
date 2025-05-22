@@ -3,16 +3,16 @@ import '../css/kkProfile.css';
 
 const KKTable = ({ residents }) => {
   return (
-    <div className="table-responsive">
+    <div className="table-responsive" style={{ display: 'flex', justifyContent: 'center', paddingRight: 0, marginRight: 0 }}>
       <table className="table table-striped table-hover">
         <thead className="table-light">
           <tr>
-            <th>#</th>
-            <th>Resident's Name</th>
-            <th>Age</th>
-            <th>Purok</th>
-            <th>Gender</th>
-            <th>Action</th>
+            <th className='kkhead'>#</th>
+            <th className='kkhead'>Resident's Name</th>
+            <th className='kkhead'>Age</th>
+            <th className='kkhead'>Purok</th>
+            <th className='kkhead'>Gender</th>
+            <th className='kkhead'>Action</th>
           </tr>
         </thead>
         <tbody>

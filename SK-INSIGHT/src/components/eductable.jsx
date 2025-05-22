@@ -3,8 +3,8 @@ import '../css/kkProfile.css';
 
 const EducTable = ({ residents, onViewDetails }) => {
   return (
-    <div className="table-responsive">
-      <table className="table table-striped table-hover">
+    <div className="table-responsive" style={{ paddingRight: 0, marginRight: 0 }}>
+      <table className="table table-striped table-hover" style={{ width: '100%', marginRight: 0 }}>
         <thead className="table-light">
           <tr>
             <th>#</th>

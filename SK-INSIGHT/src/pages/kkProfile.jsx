@@ -224,6 +224,7 @@ const Dashboard = () => {
           <button className={`nav-link${window.location.pathname === '/dashboard' ? ' active' : ''}`} onClick={() => navigate('/dashboard')}>Dashboard</button>
           <button className={`nav-link${window.location.pathname === '/kk-profile' ? ' active' : ''}`} onClick={() => navigate('/kk-profile')}>KK Profile</button>
           <button className={`nav-link${window.location.pathname === '/educapplication' ? ' active' : ''}`} onClick={() => navigate('/educapplication')}>Educational Assistance</button>
+          <button className={`nav-link${window.location.pathname === '/admin/announcements' ? ' active' : ''}`} onClick={() => navigate('/admin/announcements')}>Announcements</button>
         </div>
 
         <div className="nav-profile">
@@ -234,7 +235,7 @@ const Dashboard = () => {
       <main className="dashboard-main">
         <div className="dashboard-header">
           <h1>KK Profile</h1>
-          <p>List of KK Residents</p>
+          <p className='kklist'>List of KK Residents</p>
         </div>
 
         <div className="d-flex align-items-center">

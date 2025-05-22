@@ -112,7 +112,7 @@ const Dashboard = () => {
 
   const renderCombinedChart = (quarter, idx) => (
     <div key={quarter} className="quarter-section">
-      <div className="quarter-label" style={{textAlign: 'center', fontWeight: 600, marginBottom: 8}}>
+      <div className="quarter-label" style={{textAlign: 'center', fontWeight: 600, marginBottom: 8, color: 'black'}}>
         {quarter === 'Q1' && 'Quarter 1'}
         {quarter === 'Q2' && 'Quarter 2'}
         {quarter === 'Q3' && 'Quarter 3'}
@@ -146,6 +146,7 @@ const Dashboard = () => {
           <button className={`nav-link${window.location.pathname === '/dashboard' ? ' active' : ''}`} onClick={() => navigate('/dashboard')}>Dashboard</button>
           <button className={`nav-link${window.location.pathname === '/kk-profile' ? ' active' : ''}`} onClick={() => navigate('/kk-profile')}>KK Profile</button>
           <button className={`nav-link${window.location.pathname === '/educapplication' ? ' active' : ''}`} onClick={() => navigate('/educapplication')}>Educational Assistance</button>
+          <button className={`nav-link${window.location.pathname === '/admin/announcements' ? ' active' : ''}`} onClick={() => navigate('/admin/announcements')}>Announcements</button>
         </div>
         <div className="nav-profile">
           <button onClick={() => navigate('/')} className="logout-btn">Logout</button>
@@ -155,7 +156,7 @@ const Dashboard = () => {
       <main className="dashboard-main">
         <div className="dashboard-header">
           <h1>Dashboard</h1>
-          <p>A quick data overview of the demographic characteristics.</p>
+          <p className='dblist'>A quick data overview of the demographic characteristics.</p>
         </div>
 
         <div className="youth-classification-card">
@@ -167,7 +168,8 @@ const Dashboard = () => {
                 alignItems: 'center',
                 marginRight: 16,
                 fontWeight: 500,
-                fontSize: 14
+                fontSize: 14,
+                color: 'black',
               }}>
                 <span style={{
                   display: 'inline-block',

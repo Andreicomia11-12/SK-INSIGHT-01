@@ -92,6 +92,13 @@
     color: #07B0F2;
 }
 
+.educapp-list {
+  font-size: 1.2rem;
+  color: #1c1c1c;
+  font-weight: 500;
+  margin-top: -2vh;
+}
+
 .educapp-dashboard-main {
     flex: 1;
     padding: 30px;
@@ -145,6 +152,7 @@
     max-width: 350px;
     font-size: 1rem;
     transition: border-color 0.2s;
+    background-color: white;
 }
 
 .educapp-search-input:focus {
