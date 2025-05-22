@@ -251,4 +251,84 @@
     font-size: 2.3vh;
   }
   
+  /* Dashboard Graphs Styles */
+  .dashboard-graphs-container {
+    padding: 20px;
+  }
+  
+  .dashboard-graphs-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 15px;
+  }
+  
+  .dashboard-graphs-title-container {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+  
+  .dashboard-graphs-title {
+    margin-bottom: 0;
+    font-size: 18px;
+  }
+  
+  .dashboard-graphs-legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  
+  .dashboard-graphs-legend-item {
+    display: inline-flex;
+    align-items: center;
+    font-size: 12px;
+  }
+  
+  .dashboard-graphs-legend-indicator {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 2px;
+    margin-right: 4px;
+    border: 1px solid #ccc;
+  }
+  
+  .dashboard-graphs-quarters {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+  }
+  
+  .dashboard-graphs-donut-container {
+    display: flex;
+    gap: 15px;
+    margin-top: 20px;
+    flex-wrap: wrap;
+  }
+  
+  .dashboard-graphs-donut-card {
+    flex: 1 1 300px;
+    background: #fff;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    min-width: 300px;
+  }
+  
+  .dashboard-graphs-donut-title {
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: #333;
+  }
+  
+  .dashboard-graphs-donut-chart {
+    height: 180px;
+  }
+  
   
