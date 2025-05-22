@@ -131,6 +131,7 @@ const EducApplication = () => {
           <button className={`educapp-nav-link${window.location.pathname === '/dashboard' ? ' educapp-active' : ''}`} onClick={() => navigate('/dashboard')}>Dashboard</button>
           <button className={`educapp-nav-link${window.location.pathname === '/kk-profile' ? ' educapp-active' : ''}`} onClick={() => navigate('/kk-profile')}>KK Profile</button>
           <button className={`educapp-nav-link${window.location.pathname === '/educapplication' ? ' educapp-active' : ''}`} onClick={() => navigate('/educapplication')}>Educational Assistance</button>
+          <button className={`educapp-nav-link${window.location.pathname === '/admin/announcements' ? ' educapp-active' : ''}`} onClick={() => navigate('/admin/announcements')}>Announcements</button>
         </div>
 
         <div className="educapp-nav-profile">
@@ -140,7 +141,7 @@ const EducApplication = () => {
       <main className="educapp-dashboard-main">
         <div className="educapp-dashboard-header">
           <h1>Educational Assistance</h1>
-          <p>List of Educational Assistance Applicants</p>
+          <p className='educapp-list'>List of Educational Assistance Applicants</p>
         </div>
         <div className="educapp-search-container">
           <input
