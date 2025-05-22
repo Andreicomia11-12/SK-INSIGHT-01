@@ -5,14 +5,12 @@ import LoginPage from './pages/LoginPage';
 import HomePage from './pages/HomePage';
 import AssistancePage from './pages/AssistancePage';
 import ProfilingPage from './pages/ProfilingPage';
+import ProfilePage from './pages/ProfilePage';
+import AnnouncementPage from './pages/AnnouncementPage';
 
 import AdminLogin from './pages/adminLogin';
 import Dashboard from './pages/dashboard';
 import KKProfile from './pages/kkProfile';
-
-import ProfilePage from './pages/ProfilePage';
-import AnnouncementPage from './pages/AnnouncementPage';
-
 import EducationalAssistance from './pages/educapplication';
 
 function App() {
