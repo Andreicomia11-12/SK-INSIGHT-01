@@ -12,10 +12,10 @@ import {
   Title,
   Tooltip,
   Legend,
+  ArcElement,
 } from 'chart.js';
-import { Bar, Line } from 'react-chartjs-2';
+import { Bar, Doughnut } from 'react-chartjs-2';
 
-// Register ChartJS components
 ChartJS.register(
   CategoryScale,
   LinearScale,
@@ -24,14 +24,15 @@ ChartJS.register(
   BarElement,
   Title,
   Tooltip,
-  Legend
+  Legend,
+  ArcElement
 );
 
 const youthCategoryColors = [
   '#3b82f6', // In School Youth (blue)
   '#ef4444', // Out of School Youth (red)
   '#22c55e', // Working Youth (green)
-  '#eab308'
+  '#eab308'  // Youth w/ Specific Needs (yellow)
 ];
 
 const Dashboard = () => {
@@ -39,7 +40,7 @@ const Dashboard = () => {
 
   // Sample data for youth classification
   const youthCategories = ['In School Youth', 'Out of School Youth', 'Working Youth', 'Youth w/ Specific Needs'];
-  
+
   // Historical data (line graph)
   const historicalData = {
     Q1: [120, 85, 45, 30],
@@ -52,6 +53,25 @@ const Dashboard = () => {
     Q1: [125, 88, 42, 32],
     Q2: [135, 92, 38, 38],
     Q3: [130, 98, 35, 45],
+  };
+
+  // Donut chart data
+  const youthAgeGroupData = {
+    labels: ['15-17', '18-20', '21-24'],
+    datasets: [{
+      data: [40, 35, 25],
+      backgroundColor: ['#3b82f6', '#22c55e', '#eab308'],
+      borderWidth: 0,
+    }]
+  };
+
+  const civilStatusData = {
+    labels: ['Single', 'Married', 'Others'],
+    datasets: [{
+      data: [75, 20, 5],
+      backgroundColor: ['#facc15', '#6366f1', '#f97316'],
+      borderWidth: 0,
+    }]
   };
 
   const chartOptions = {
@@ -84,6 +104,20 @@ const Dashboard = () => {
     }
   };
 
+  const donutOptions = {
+    responsive: true,
+    maintainAspectRatio: false,
+    cutout: '70%',
+    plugins: {
+      legend: {
+        display: false, // Hide default legend since we're using custom labels
+      },
+      tooltip: {
+        enabled: true, // Keep tooltips
+      }
+    },
+  };
+
   const createCombinedChartData = (quarter) => ({
     labels: youthCategories,
     datasets: [
@@ -110,9 +144,9 @@ const Dashboard = () => {
     ],
   });
 
-  const renderCombinedChart = (quarter, idx) => (
+  const renderCombinedChart = (quarter) => (
     <div key={quarter} className="quarter-section">
-      <div className="quarter-label" style={{textAlign: 'center', fontWeight: 600, marginBottom: 8, color: 'black'}}>
+      <div className="quarter-label" style={{ textAlign: 'center', fontWeight: 600, marginBottom: 8, color: 'black' }}>
         {quarter === 'Q1' && 'Quarter 1'}
         {quarter === 'Q2' && 'Quarter 2'}
         {quarter === 'Q3' && 'Quarter 3'}
@@ -130,6 +164,57 @@ const Dashboard = () => {
     </div>
   );
 
+  // Custom hardcoded labels for Youth Age Group chart
+  const youthAgeGroupLabels = [
+    { label: '15-17', color: '#3b82f6', value: 40 },
+    { label: '18-20', color: '#22c55e', value: 35 },
+    { label: '21-24', color: '#eab308', value: 25 },
+  ];
+
+  // Custom hardcoded labels for Civil Status chart
+  const civilStatusLabels = [
+    { label: 'Single', color: '#facc15', value: 75 },
+    { label: 'Married', color: '#6366f1', value: 20 },
+    { label: 'Others', color: '#f97316', value: 5 },
+  ];
+
+  const renderDonutChartWithLabels = (title, data, labels) => (
+    <div style={{
+      flex: 1,
+      minWidth: '300px',
+      backgroundColor: '#fff',
+      padding: '1.5rem',
+      borderRadius: '10px',
+      boxShadow: '0 0 10px rgba(0,0,0,0.05)',
+      marginTop: '2rem',
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center',
+    }}>
+      <h3 style={{ textAlign: 'center', marginBottom: '1rem', color: 'black' }}>{title}</h3>
+      <div style={{ height: '280px', width: '280px', position: 'relative' }}>
+        <Doughnut data={data} options={donutOptions} />
+      </div>
+      <div style={{ marginTop: '1rem', width: '100%', display: 'flex', justifyContent: 'center', gap: '1.5rem', flexWrap: 'wrap' }}>
+        {labels.map(({ label, color, value }) => (
+          <div key={label} style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
+            <span style={{
+              display: 'inline-block',
+              width: 16,
+              height: 16,
+              borderRadius: 3,
+              backgroundColor: color,
+              border: '1px solid #ccc',
+            }}></span>
+            <span style={{ fontWeight: '600', color: 'black' }}>
+              {label}: {value}%
+            </span>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+
   return (
     <div className="dashboard-container">
       <nav className="dashboard-nav">
@@ -141,7 +226,7 @@ const Dashboard = () => {
             <span className="adds">Admin</span>
           </div>
         </div>
-        
+
         <div className="nav-links">
           <button className={`nav-link${window.location.pathname === '/dashboard' ? ' active' : ''}`} onClick={() => navigate('/dashboard')}>Dashboard</button>
           <button className={`nav-link${window.location.pathname === '/kk-profile' ? ' active' : ''}`} onClick={() => navigate('/kk-profile')}>KK Profile</button>
@@ -152,7 +237,7 @@ const Dashboard = () => {
           <button onClick={() => navigate('/')} className="logout-btn">Logout</button>
         </div>
       </nav>
-      
+
       <main className="dashboard-main">
         <div className="dashboard-header">
           <h1>Dashboard</h1>
@@ -188,9 +273,15 @@ const Dashboard = () => {
             {['Q1', 'Q2', 'Q3'].map(renderCombinedChart)}
           </div>
         </div>
+
+        {/* Donut Charts with hardcoded labels */}
+        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '2rem', marginTop: '0rem', width: '100%' }}>
+          {renderDonutChartWithLabels('Youth Age Group Distribution', youthAgeGroupData, youthAgeGroupLabels)}
+          {renderDonutChartWithLabels('Civil Status Distribution', civilStatusData, civilStatusLabels)}
+        </div>
       </main>
     </div>
   );
 };
 
-export default Dashboard; 
+export default Dashboard;
