@@ -5,6 +5,8 @@ import LoginPage from './pages/LoginPage';
 import HomePage from './pages/HomePage';
 import AssistancePage from './pages/AssistancePage';
 import ProfilingPage from './pages/ProfilingPage';
+import ProfilePage from './pages/ProfilePage';
+import AnnouncementPage from './pages/AnnouncementPage';
 
 import AdminLogin from './pages/adminLogin';
 import Dashboard from './pages/dashboard';
@@ -20,6 +22,9 @@ function App() {
         <Route path="/home" element={<HomePage />} />
         <Route path="/profiling" element={<ProfilingPage />} />
         <Route path="/assistance" element={<AssistancePage />} /> 
+        <Route path="/profile" element={<ProfilePage />} />
+        <Route path="/announcements" element={<AnnouncementPage />} />
+
 
         <Route path="/admin" element={<AdminLogin />} />
         <Route path="/dashboard" element={<Dashboard />} />
@@ -31,3 +36,4 @@ function App() {
 }
 
 export default App;
+

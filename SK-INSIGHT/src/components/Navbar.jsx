@@ -42,8 +42,13 @@ const Navbar = () => {
 
             {/* Right: Icons */}
             <div className="navbar-icons">
-                <FaUser className="navbar-icon" />
-                <FaBell className="navbar-icon" />
+                <Link to="/profile" className="navbar-icon-link1">
+                    <FaUser className="navbar-icon" />
+                </Link>
+                <Link to="/announcements" className="navbar-icon-link1">
+                    <FaBell className="navbar-icon" />
+                </Link>
+
             </div>
         </nav>
     );
