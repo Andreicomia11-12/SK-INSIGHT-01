@@ -26,7 +26,7 @@ const AdminLogin = () => {
       <div className="login-right">
         <form className="login-form" onSubmit={handleSubmit}>
           <h2 className='admin-login'>Admin Login</h2>
-          <div className="input-group">
+          <div className="input-group1">
             <FaUser className="input-icon" />
             <input
               type="text"
@@ -36,7 +36,7 @@ const AdminLogin = () => {
               required
             />
           </div>
-          <div className="input-group">
+          <div className="input-group1">
             <FaLock className="input-icon" />
             <input
               type={showPassword ? "text" : "password"}
