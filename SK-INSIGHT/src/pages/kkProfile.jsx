@@ -9,14 +9,102 @@ const Dashboard = () => {
 
   // Initial resident data (moved from KKTable.jsx)
   const initialResidents = [
-    { id: 1, name: 'Juan Dela Cruz', age: 18, purok: 'Purok 1', gender: 'Male' },
-    { id: 2, name: 'Maria Santos', age: 20, purok: 'Purok 1', gender: 'Female' },
-    { id: 3, name: 'Pedro Gomez', age: 17, purok: 'Purok 1', gender: 'Male' },
-    { id: 4, name: 'Ana Reyes', age: 19, purok: 'Purok 2', gender: 'Female' },
-    { id: 5, name: 'Carlos Mendoza', age: 21, purok: 'Purok 2', gender: 'Male' },
-    { id: 6, name: 'Liza Torres', age: 18, purok: 'Purok 3', gender: 'Female' },
-    { id: 7, name: 'Miguel Santos', age: 20, purok: 'Purok 3', gender: 'Male' },
-    { id: 8, name: 'Elena Cruz', age: 19, purok: 'Purok 4', gender: 'Female' },
+    { 
+      id: 1, 
+      name: 'Juan Dela Cruz', 
+      age: 18, 
+      purok: 'Purok 1', 
+      gender: 'Male',
+      workStatus: 'Employed',
+      youthAgeGroup: 'Core Youth',
+      educationalBackground: 'High School Graduate',
+      youthClassification: 'Working Youth',
+      civilStatus: 'Single'
+    },
+    { 
+      id: 2, 
+      name: 'Maria Santos', 
+      age: 20, 
+      purok: 'Purok 1', 
+      gender: 'Female',
+      workStatus: 'Unemployed',
+      youthAgeGroup: 'Core Youth',
+      educationalBackground: 'College Undergraduate',
+      youthClassification: 'In-School Youth',
+      civilStatus: 'Single'
+    },
+    { 
+      id: 3, 
+      name: 'Pedro Gomez', 
+      age: 17, 
+      purok: 'Purok 1', 
+      gender: 'Male',
+      workStatus: 'Self-Employed',
+      youthAgeGroup: 'Child Youth',
+      educationalBackground: 'High School Undergraduate',
+      youthClassification: 'Out-of-School Youth',
+      civilStatus: 'Single'
+    },
+    { 
+      id: 4, 
+      name: 'Ana Reyes', 
+      age: 19, 
+      purok: 'Purok 2', 
+      gender: 'Female',
+      workStatus: 'Currently Looking for a Job',
+      youthAgeGroup: 'Core Youth',
+      educationalBackground: 'College Undergraduate',
+      youthClassification: 'In-School Youth',
+      civilStatus: 'Single'
+    },
+    { 
+      id: 5, 
+      name: 'Carlos Mendoza', 
+      age: 21, 
+      purok: 'Purok 2', 
+      gender: 'Male',
+      workStatus: 'Employed',
+      youthAgeGroup: 'Young Youth',
+      educationalBackground: 'College Graduate',
+      youthClassification: 'Working Youth',
+      civilStatus: 'Single'
+    },
+    { 
+      id: 6, 
+      name: 'Liza Torres', 
+      age: 18, 
+      purok: 'Purok 3', 
+      gender: 'Female',
+      workStatus: 'Not interested in looking for a job',
+      youthAgeGroup: 'Core Youth',
+      educationalBackground: 'High School Graduate',
+      youthClassification: 'Out-of-School Youth',
+      civilStatus: 'Single'
+    },
+    { 
+      id: 7, 
+      name: 'Miguel Santos', 
+      age: 20, 
+      purok: 'Purok 3', 
+      gender: 'Male',
+      workStatus: 'Employed',
+      youthAgeGroup: 'Core Youth',
+      educationalBackground: 'College Undergraduate',
+      youthClassification: 'Working Youth',
+      civilStatus: 'Single'
+    },
+    { 
+      id: 8, 
+      name: 'Elena Cruz', 
+      age: 19, 
+      purok: 'Purok 4', 
+      gender: 'Female',
+      workStatus: 'Unemployed',
+      youthAgeGroup: 'Core Youth',
+      educationalBackground: 'High School Graduate',
+      youthClassification: 'In-School Youth',
+      civilStatus: 'Single'
+    },
   ];
 
   // State for search term and filtered residents
@@ -31,11 +119,11 @@ const Dashboard = () => {
   // Classification to Group Options Mapping
   const classificationGroups = {
     'Work Status': ['Employed', 'Unemployed', 'Self-Employed', 'Currently Looking for a Job', 'Not interested in looking for a job'],
-    'Educational Background': ['Elementary Undergraduate', 'Elementary Graduate', 'High School Undergraduate', 'High School Graduate', 'College Undergraduate', 'College Graduate'],
     'Youth Age Group': ['Child Youth', 'Core Youth', 'Young Youth'],
+    'Educational Background': ['Elementary Undergraduate', 'Elementary Graduate', 'High School Undergraduate', 'High School Graduate', 'College Undergraduate', 'College Graduate'],
     'Youth Classification': ['In-School Youth', 'Out-of-School Youth', 'Working Youth', 'Youth with Specific Needs'],
     'Civil Status': ['Single', 'Married', 'Widowed'],
-    'Purok': ['Purok 1', 'Purok 2', 'Purok 3', 'Purok 4']
+    'Purok': ['Purok 1', 'Purok 2', 'Purok 3', 'Purok 4', 'Purok 5', 'Purok 6', 'Purok 7', 'Purok 8']
   };
 
   const handleClassificationChange = (e) => {
@@ -43,20 +131,81 @@ const Dashboard = () => {
     setClassification(selected);
     setGroupOptions(classificationGroups[selected] || []);
     setSelectedGroup('');
+    filterResidents(searchTerm, selected, '');
+  };
+
+  const handleGroupChange = (e) => {
+    const selected = e.target.value;
+    setSelectedGroup(selected);
+    filterResidents(searchTerm, classification, selected);
+  };
+
+  const filterResidents = (search, classification, group) => {
+    let filtered = initialResidents;
+
+    // Apply search filter
+    if (search) {
+      filtered = filtered.filter(resident =>
+        Object.values(resident).some(value =>
+          String(value).toLowerCase().includes(search.toLowerCase())
+        )
+      );
+    }
+
+    // Apply classification and group filters
+    if (classification && group) {
+      filtered = filtered.filter(resident => {
+        switch (classification) {
+          case 'Work Status':
+            return resident.workStatus === group;
+          case 'Youth Age Group':
+            return resident.youthAgeGroup === group;
+          case 'Educational Background':
+            return resident.educationalBackground === group;
+          case 'Youth Classification':
+            return resident.youthClassification === group;
+          case 'Civil Status':
+            return resident.civilStatus === group;
+          case 'Purok':
+            return resident.purok === group;
+          default:
+            return true;
+        }
+      });
+    }
+
+    setFilteredResidents(filtered);
+  };
+
+  const handleDownloadList = () => {
+    // Create a CSV string with headers
+    const headers = ['ID', 'Name', 'Age', 'Purok', 'Gender'];
+    const csvContent = [
+      headers.join(','),
+      ...filteredResidents.map(resident => 
+        [resident.id, resident.name, resident.age, resident.purok, resident.gender].join(',')
+      )
+    ].join('\n');
+
+    // Create a blob and download link
+    const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+    const link = document.createElement('a');
+    const url = URL.createObjectURL(blob);
+    
+    link.setAttribute('href', url);
+    link.setAttribute('download', 'kk_residents_list.csv');
+    link.style.visibility = 'hidden';
+    
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
   };
 
   // Handle search input change
   const handleSearchChange = (e) => {
     const term = e.target.value.toLowerCase();
     setSearchTerm(term);
-
-    // Filter residents based on search term across multiple fields
-    const filtered = initialResidents.filter(resident =>
-      Object.values(resident).some(value =>
-        String(value).toLowerCase().includes(term)
-      )
-    );
-    setFilteredResidents(filtered);
+    filterResidents(term, classification, selectedGroup);
   };
 
   return (
@@ -97,30 +246,43 @@ const Dashboard = () => {
               value={searchTerm}
               onChange={handleSearchChange}
             />
-          
+            <select 
+              className="kk-classification-dropdown"
+              value={classification}
+              onChange={handleClassificationChange}
+            >
+              <option value="">Select Classification</option>
+              <option value="Work Status">Work Status</option>
+              <option value="Youth Age Group">Youth Age Group</option>
+              <option value="Educational Background">Educational Background</option>
+              <option value="Youth Classification">Youth Classification</option>
+              <option value="Civil Status">Civil Status</option>
+              <option value="Purok">Purok</option>
+            </select>
 
-          <div className="filt d-flex ">
-            <select className="form-select" value={classification} onChange={handleClassificationChange}>
-              <option value="">Filter Classification</option>
-              {Object.keys(classificationGroups).map((key, index) => (
-                <option key={index} value={key}>{key}</option>
+            <select 
+              className="kk-group-selection-dropdown"
+              value={selectedGroup}
+              onChange={handleGroupChange}
+              disabled={!classification}
+            >
+              <option value="">Select Group</option>
+              {groupOptions.map((option, index) => (
+                <option key={index} value={option}>
+                  {option}
+                </option>
               ))}
             </select>
-          </div>
 
-          <div className="group d-flex ">
-            <select className="form-select me-2" value={selectedGroup} onChange={(e) => setSelectedGroup(e.target.value)} disabled={!groupOptions.length}>
-              <option value="">{groupOptions.length ? 'Select Group' : 'Select Classification First'}</option>
-              {groupOptions.map((group, index) => (
-                <option key={index} value={group}>{group}</option>
-              ))}
-            </select>
+            <button 
+              className="kk-download-list-btn"
+              onClick={handleDownloadList}
+              disabled={filteredResidents.length === 0}
+            >
+              <i className="fas fa-download"></i>
+              Download List
+            </button>
           </div>
-            <div className="d-flex">
-              <button className="btn">Download List</button>
-            </div>
-          </div>
-
         </div>
 
         <div className="table-container">
