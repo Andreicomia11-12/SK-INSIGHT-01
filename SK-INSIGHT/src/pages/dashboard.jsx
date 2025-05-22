@@ -13,6 +13,9 @@ import {
   Tooltip,
   Legend,
   ArcElement,
+  BarController,
+  LineController,
+  DoughnutController,
 } from 'chart.js';
 import { Bar, Doughnut } from 'react-chartjs-2';
 
@@ -25,7 +28,10 @@ ChartJS.register(
   Title,
   Tooltip,
   Legend,
-  ArcElement
+  ArcElement,
+  BarController,
+  LineController,
+  DoughnutController
 );
 
 const youthCategoryColors = [

@@ -26,7 +26,6 @@ function App() {
         <Route path="/assistance" element={<AssistancePage />} />
         <Route path="/profile" element={<ProfilePage />} />
         <Route path="/announcements" element={<AnnouncementPage />} />
-        <Route path="/admin/announcements" element={<AdminAnnouncementPage />} />
         <Route path="/about-us" element={<AboutUsPage />} />
 
 
@@ -34,6 +33,7 @@ function App() {
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/kk-profile" element={<KKProfile />} />
         <Route path="/educapplication" element={<Educapplication />} />
+        <Route path="/admin/announcements" element={<AdminAnnouncementPage />} />
       </Routes>
     </Router>
   );
