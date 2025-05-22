@@ -1,0 +1,539 @@
+/* EducApplication Sidebar and Layout Styles */
+.educapp-dashboard-container {
+    min-height: 100vh;
+    display: flex;
+    background-color: #D1E1F5;
+    width: 100vw;
+}
+
+.educapp-dashboard-nav {
+    width: 280px;
+    background-color: #0A2C59;
+    color: white;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.educapp-nav-logo {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 16px;
+    font-size: 14px;
+}
+
+.educapp-logo-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.educapp-nav-logo-img {
+    width: 90px;
+    height: auto;
+    margin-left: 8%;
+}
+
+.educapp-nav-logo h2 {
+    font-size: 1rem;
+    text-align: center;
+}
+
+.educapp-adminn {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-left: 8px;
+}
+
+.educapp-nav-links {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.educapp-nav-link {
+    background: none;
+    border: none;
+    color: white;
+    padding: 12px;
+    text-align: left;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.educapp-nav-link:hover, .educapp-nav-link.educapp-active {
+    background-color: #07B0F2;
+}
+
+.educapp-nav-profile {
+    margin-top: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.educapp-logout-btn {
+    background: none;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: color 0.3s;
+    margin-top: -30%;
+    margin-left: -10%;
+}
+
+.educapp-logout-btn:hover {
+    color: #07B0F2;
+}
+
+.educapp-dashboard-main {
+    flex: 1;
+    padding: 30px;
+}
+
+.educapp-dashboard-header {
+    margin-bottom: 30px;
+}
+
+.educapp-dashboard-header h1 {
+    color: #000000;
+    font-size: 2rem;
+}
+
+.educapp-skb {
+    margin-left: 5%;
+    font-size: medium;
+}
+
+.educapp-adds {
+    color: rgb(255, 208, 0);
+    margin-top: -15%;
+}
+
+.educapp-sko {
+    margin-top: -4%;
+    font-size: 2.3vh;
+}
+
+.educapp-table-container {
+    background: #fff;
+    padding: 24px 18px;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+    margin-top: 24px;
+    overflow-x: auto;
+}
+
+.educapp-search-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-bottom: 18px;
+}
+
+.educapp-search-input {
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    width: 100%;
+    max-width: 350px;
+    font-size: 1rem;
+    transition: border-color 0.2s;
+}
+
+.educapp-search-input:focus {
+    outline: none;
+    border-color: #07B0F2;
+    box-shadow: 0 0 0 2px rgba(7, 176, 242, 0.15);
+}
+
+.educapp-purok-dropdown {
+    width: 250px;
+    height: 40px;
+    padding: 8px 12px;
+    border: 1px solid #aaaaaa;
+    border-radius: 5px;
+    background-color: white;
+    font-size: 14px;
+    color: #333;
+    cursor: pointer;
+    outline: none;
+    transition: border-color 0.2s ease;
+    margin-left: 420px;
+}
+
+.educapp-purok-dropdown:hover {
+    border-color: #007bff;
+}
+
+.educapp-purok-dropdown:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+}
+
+.educapp-purok-dropdown option {
+    padding: 8px;
+    background-color: white;
+}
+
+.educapp-download-list-btn {
+    height: 40px;
+    width: 150px;
+    padding: 0 20px;
+    background-color: #ffffff;
+    color: rgb(0, 0, 0);
+    border: black solid 1px;
+    border-radius: 5px;
+    font-size: 14px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: background-color 0.2s ease, color 0.2s ease;
+    margin-left: 15px;
+    font-weight: 500;
+}
+
+.educapp-download-list-btn:hover:not(:disabled) {
+    background-color: #000000;
+    color: white;
+}
+
+.educapp-download-list-btn:active {
+    background-color: #ffffff;
+}
+
+.educapp-download-list-btn:disabled {
+    background-color: #6c757d;
+    color: #fff;
+    cursor: not-allowed;
+    opacity: 0.7;
+}
+
+.educapp-modal-overlay {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.4);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.educapp-modal {
+  background: #fff;
+  border-radius: 18px;
+  padding: 40px 40px 32px 40px;
+  max-width: 700px;
+  width: 100%;
+  box-shadow: 0 12px 40px rgba(0,0,0,0.18);
+  position: relative;
+  animation: educapp-modal-fadein 0.2s;
+  max-height: 80vh;
+  overflow-y: auto;
+  margin: 24px;
+}
+@keyframes educapp-modal-fadein {
+  from { opacity: 0; transform: translateY(40px); }
+  to { opacity: 1; transform: none; }
+}
+.educapp-modal-close {
+  position: absolute;
+  top: -18px;
+  right: -10px;
+  background: none;
+  border: none;
+  font-size: 2rem;
+  color: #333;
+  cursor: pointer;
+  transition: color 0.2s;
+  z-index: 1100;
+}
+.educapp-modal-close:hover {
+  color: #000000;
+}
+.educapp-modal-section {
+  margin-bottom: 18px;
+  font-size: 1rem;
+  color: #222;
+}
+.educapp-modal-section h3 {
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+  font-size: 1.1rem;
+  color: #0A2C59;
+}
+.educapp-view-details-btn {
+  background: none;
+  border: none;
+  color: #007bff;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 1em;
+  padding: 0;
+  transition: color 0.2s;
+}
+.educapp-view-details-btn:hover {
+  color: #0056b3;
+  text-decoration: underline;
+}
+
+.educapp-modal-content {
+  padding-top: 32px;
+  background: #f7fafd;
+  border-radius: 12px;
+  padding-bottom: 32px;
+  box-shadow: 0 2px 8px rgba(10,44,89,0.04);
+}
+.educapp-modal-title {
+  margin-top: 0;
+  margin-bottom: 28px;
+  font-size: 2rem;
+  color: #0A2C59;
+  text-align: center;
+  letter-spacing: 0.5px;
+  font-weight: 700;
+}
+.educapp-modal-info-section {
+  margin-bottom: 28px;
+}
+.educapp-modal-info-grid {
+  display: flex;
+  gap: 48px;
+  flex-wrap: wrap;
+}
+.educapp-modal-info-grid > div {
+  flex: 1 1 220px;
+  min-width: 180px;
+  line-height: 2.1;
+  font-size: 1.08rem;
+  color: #1a237e;
+  font-weight: 500;
+}
+.educapp-modal-info-grid strong {
+  color: #0A2C59;
+  font-weight: 600;
+}
+.educapp-modal-divider {
+  border: none;
+  border-top: 2px solid #e0e0e0;
+  margin: 28px 0 28px 0;
+}
+.educapp-modal-doc-list {
+  padding-left: 18px;
+  margin: 0;
+  font-size: 1.08rem;
+}
+.educapp-modal-doc-list li {
+  margin-bottom: 14px;
+  color: #333;
+  background: #f0f4fa;
+  border-radius: 6px;
+  padding: 8px 14px;
+  transition: background 0.2s;
+}
+.educapp-modal-doc-list li:hover {
+  background: #e3eaf6;
+}
+
+/* Modal Header */
+.educapp-modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 18px;
+}
+
+.educapp-modal-profile {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.educapp-modal-avatar {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #e0e0e0;
+}
+
+.educapp-modal-fullname {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #222b45;
+}
+
+.educapp-modal-print-btn {
+    width: 90px;
+  background: #fff;
+  border: 1px solid #aaa;
+  border-radius: 6px;
+  padding: 7px 7px 7px 18px;
+  font-size: 1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: background 0.2s;
+  margin-right: 10vh;
+}
+.educapp-modal-print-btn:hover {
+  background: #f0f4fa;
+}
+
+/* Info Grid */
+.educapp-modal-info-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 18px;
+}
+.educapp-modal-info-table td, .educapp-modal-info-table th {
+  padding: 7px 0;
+  font-size: 1.05rem;
+}
+.educapp-modal-info-table th {
+  text-align: left;
+  color: #0A2C59;
+  font-weight: 600;
+  width: 160px;
+}
+.educapp-modal-info-table tr:not(:last-child) td,
+.educapp-modal-info-table tr:not(:last-child) th {
+  border-bottom: 1px solid #e0e0e0;
+}
+
+/* Requirements Section */
+.educapp-modal-req-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 10px;
+  color: #0A2C59;
+}
+.educapp-modal-req-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.educapp-modal-req-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #f7fafd;
+  border-radius: 6px;
+  padding: 10px 14px;
+  margin-bottom: 10px;
+  font-size: 1rem;
+}
+.educapp-modal-req-label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 500;
+}
+.educapp-modal-req-icon {
+  font-size: 1.2em;
+  color: #0A2C59;
+}
+.educapp-modal-req-file {
+  background: #fff;
+  border: 1px solid #aaa;
+  border-radius: 4px;
+  padding: 4px 10px;
+  font-size: 0.98em;
+  margin-left: 10px;
+}
+
+/* Footer Buttons */
+.educapp-modal-footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 18px;
+}
+.educapp-modal-btn {
+  border: none;
+  border-radius: 5px;
+  padding: 8px 22px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+.educapp-modal-btn-approve {
+  background: #007bff;
+  color: #fff;
+}
+.educapp-modal-btn-approve:hover {
+  background: #0056b3;
+}
+.educapp-modal-btn-reject {
+  background: #e74c3c;
+  color: #fff;
+}
+.educapp-modal-btn-reject:hover {
+  background: #c0392b;
+}
+
+.educapp-status-modal-overlay {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.25);
+  z-index: 1200;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.educapp-status-modal {
+  background: #fff;
+  border-radius: 14px;
+  padding: 36px 32px 28px 32px;
+  min-width: 320px;
+  max-width: 90vw;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.18);
+  text-align: center;
+  position: relative;
+  animation: educapp-modal-fadein 0.2s;
+}
+.educapp-status-modal-success .educapp-status-modal-icon {
+  font-size: 2.5rem;
+  color: #27ae60;
+  margin-bottom: 10px;
+  display: block;
+}
+.educapp-status-modal-rejected .educapp-status-modal-icon {
+  font-size: 2.5rem;
+  color: #e74c3c;
+  margin-bottom: 10px;
+  display: block;
+}
+.educapp-status-modal h2 {
+  margin: 0 0 10px 0;
+  font-size: 1.4rem;
+  font-weight: 700;
+}
+.educapp-status-modal p {
+  margin: 0 0 18px 0;
+  color: #444;
+  font-size: 1.05rem;
+}
+.educapp-status-modal-close {
+  background: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 8px 22px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+  margin-top: 10px;
+}
+.educapp-status-modal-close:hover {
+  background: #0056b3;
+}

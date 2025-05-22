@@ -127,29 +127,33 @@ const DashboardGraphs = () => {
 
   return (
     <div className="youth-classification-card">
-      <h2 className="youth-classification-title">Youth Classification</h2>
-      <div className="legend-row">
-        {youthCategories.map((cat, idx) => (
-          <span key={cat} style={{
-            display: 'inline-flex',
-            alignItems: 'center',
-            marginRight: 16,
-            fontWeight: 500,
-            fontSize: 14
-          }}>
-            <span style={{
-              display: 'inline-block',
-              width: 14,
-              height: 14,
-              borderRadius: 3,
-              background: youthCategoryColors[idx],
-              marginRight: 6,
-              border: '1px solid #ccc'
-            }}></span>
-            {cat}
-          </span>
-        ))}
-      </div>
+      <div className="youth-classification-header-row" style={{display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '1rem', marginBottom: 18}}>
+  <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', flexWrap: 'wrap' }}>
+    <h2 className="youth-classification-title" style={{ marginBottom: 0 }}>Youth Classification</h2>
+    <div className="legend-row" style={{ display: 'flex', flexWrap: 'wrap' }}>
+      {youthCategories.map((cat, idx) => (
+        <span key={cat} style={{
+          display: 'inline-flex',
+          alignItems: 'center',
+          marginRight: 12,
+          fontWeight: 500,
+          fontSize: 14
+        }}>
+          <span style={{
+            display: 'inline-block',
+            width: 14,
+            height: 14,
+            borderRadius: 3,
+            background: youthCategoryColors[idx],
+            marginRight: 6,
+            border: '1px solid #ccc'
+          }}></span>
+          {cat}
+        </span>
+      ))}
+    </div>
+  </div>
+</div>
       <div className="quarters-row">
         {['Q1', 'Q2', 'Q3'].map(renderCombinedChart)}
       </div>

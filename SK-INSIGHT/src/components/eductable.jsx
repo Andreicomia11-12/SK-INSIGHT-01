@@ -1,7 +1,7 @@
 import React from 'react';
 import '../css/kkProfile.css';
 
-const KKTable = ({ residents }) => {
+const EducTable = ({ residents, onViewDetails }) => {
   return (
     <div className="table-responsive">
       <table className="table table-striped table-hover">
@@ -16,14 +16,18 @@ const KKTable = ({ residents }) => {
           </tr>
         </thead>
         <tbody>
-          {residents.map((resident) => (
+          {residents.map((resident, idx) => (
             <tr key={resident.id}>
-              <th scope="row">{resident.id}</th>
+              <th scope="row">{idx + 1}</th>
               <td>{resident.name}</td>
               <td>{resident.age}</td>
               <td>{resident.purok}</td>
               <td>{resident.gender}</td>
-              <td className="act">View Full Details {'>>'}</td>
+              <td className="act">
+                <button className="educapp-view-details-btn" onClick={() => onViewDetails(resident)}>
+                  View Full Details {'>>'}
+                </button>
+              </td>
             </tr>
           ))}
         </tbody>
@@ -32,4 +36,4 @@ const KKTable = ({ residents }) => {
   );
 };
 
-export default KKTable;
+export default EducTable;
