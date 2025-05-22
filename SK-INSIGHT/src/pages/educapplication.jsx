@@ -75,6 +75,7 @@ const Dashboard = () => {
           <button className={`nav-link${window.location.pathname === '/dashboard' ? ' active' : ''}`} onClick={() => navigate('/dashboard')}>Dashboard</button>
           <button className={`nav-link${window.location.pathname === '/kk-profile' ? ' active' : ''}`} onClick={() => navigate('/kk-profile')}>KK Profile</button>
           <button className={`nav-link${window.location.pathname === '/educapplication' ? ' active' : ''}`} onClick={() => navigate('/educapplication')}>Educational Assistance</button>
+          
         </div>
 
         <div className="nav-profile">
