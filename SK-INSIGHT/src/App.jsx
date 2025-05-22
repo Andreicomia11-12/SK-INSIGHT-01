@@ -9,7 +9,7 @@ import ProfilingPage from './pages/ProfilingPage';
 import AdminLogin from './pages/adminLogin';
 import Dashboard from './pages/dashboard';
 import KKProfile from './pages/kkProfile';
-import EducationalAssistance from './pages/educapplication';
+import Educapplication from './pages/educapplication';
 
 function App() {
   return (
@@ -24,7 +24,7 @@ function App() {
         <Route path="/admin" element={<AdminLogin />} />
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/kk-profile" element={<KKProfile />} />
-        <Route path="/educapplication" element={<EducationalAssistance />} />
+        <Route path="/educapplication" element={<Educapplication />} />
       </Routes>
     </Router>
   );
