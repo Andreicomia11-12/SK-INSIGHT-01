@@ -4,6 +4,7 @@ import '../css/ProfilePage.css';
 import { FaCheckCircle, FaSignOutAlt } from 'react-icons/fa';
 import Navbar from '../components/Navbar';
 import avatarImage from '../assets/ProfileImage.jpg';
+import Footer from '../components/Footer';
 
 const ProfilePage = () => {
   const [showVerifyModal, setShowVerifyModal] = useState(false);
@@ -142,6 +143,7 @@ const ProfilePage = () => {
           </div>
         </div>
       )}
+      <Footer />
     </>
   );
 };

@@ -1,6 +1,6 @@
 /* Main Page Layout */
 .sk-announcement-page {
-  min-height: 100vh;
+  min-height: 88vh;
   padding: 0px 20px;
 }
 
@@ -161,6 +161,10 @@
 
 /* Responsive Styles */
 @media (max-width: 768px) {
+  .sk-announcement-page {
+    margin-bottom: 3rem;
+  }
+
   .sk-announcement-table {
     display: none;
   }

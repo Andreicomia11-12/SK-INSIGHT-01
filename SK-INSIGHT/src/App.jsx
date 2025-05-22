@@ -12,6 +12,7 @@ import AdminLogin from './pages/adminLogin';
 import Dashboard from './pages/dashboard';
 import KKProfile from './pages/kkProfile';
 import Educapplication from './pages/educapplication';
+import AboutUsPage from './pages/AboutUsPage';
 
 function App() {
   return (
@@ -21,9 +22,10 @@ function App() {
         <Route path="/" element={<LoginPage />} />
         <Route path="/home" element={<HomePage />} />
         <Route path="/profiling" element={<ProfilingPage />} />
-        <Route path="/assistance" element={<AssistancePage />} /> 
+        <Route path="/assistance" element={<AssistancePage />} />
         <Route path="/profile" element={<ProfilePage />} />
         <Route path="/announcements" element={<AnnouncementPage />} />
+        <Route path="/about-us" element={<AboutUsPage />} />
 
 
         <Route path="/admin" element={<AdminLogin />} />

@@ -1,6 +1,7 @@
 // src/pages/HomePage.js
 import React from 'react';
 import Navbar from '../components/Navbar';
+import Footer from '../components/Footer';
 import '../css/HomePage.css';
 import { useNavigate } from 'react-router-dom';
 import HeroImage from '../assets/SK.webp';
@@ -29,11 +30,12 @@ const HomePage = () => {
                     </div>
 
                     <div className="buttons">
-                        <button className="btn btn-primary" onClick={() => navigate('/announcements')}>Get Started</button>
-                        <button className="btn btn-secondary">How it works</button>
+                        <button className="btn btn-primary" onClick={() => navigate('/profile')}>Get Started</button>
+                        <button className="btn btn-secondary" onClick={() => navigate('/about-us')}>How it works</button>
                     </div>
                 </section>
             </div>
+            <Footer />
         </>
     );
 };
