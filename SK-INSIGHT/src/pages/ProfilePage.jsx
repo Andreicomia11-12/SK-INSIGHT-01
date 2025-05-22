@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import '../css/ProfilePage.css';
 import { FaCheckCircle, FaSignOutAlt } from 'react-icons/fa';
 import Navbar from '../components/Navbar';
@@ -7,6 +8,7 @@ import avatarImage from '../assets/ProfileImage.jpg';
 const ProfilePage = () => {
   const [showVerifyModal, setShowVerifyModal] = useState(false);
   const [showSuccessModal, setShowSuccessModal] = useState(false);
+  const navigate = useNavigate(); // For redirecting to login
 
   const user = {
     username: 'Karrie123',
@@ -28,6 +30,10 @@ const ProfilePage = () => {
     e.preventDefault();
     setShowVerifyModal(false);
     setShowSuccessModal(true);
+  };
+
+  const handleLogout = () => {
+    navigate('/');
   };
 
   return (
@@ -91,7 +97,7 @@ const ProfilePage = () => {
                   Verify Account
                 </button>
               )}
-              <button className="btn btn-logout">
+              <button className="btn btn-logout" onClick={handleLogout}>
                 <FaSignOutAlt /> Log Out
               </button>
             </div>
@@ -99,7 +105,6 @@ const ProfilePage = () => {
         </div>
       </div>
 
-      {/* VERIFY MODAL */}
       {showVerifyModal && (
         <div className="modal-overlay">
           <div className="modal">
@@ -124,7 +129,6 @@ const ProfilePage = () => {
         </div>
       )}
 
-      {/* SUCCESS MODAL */}
       {showSuccessModal && (
         <div className="modal-overlay">
           <div className="modal">

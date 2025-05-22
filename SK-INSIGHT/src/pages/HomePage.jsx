@@ -1,25 +1,41 @@
 // src/pages/HomePage.js
 import React from 'react';
 import Navbar from '../components/Navbar';
-import SKlogo from '../assets/logo.png';
 import '../css/HomePage.css';
+import { useNavigate } from 'react-router-dom';
+import HeroImage from '../assets/SK.webp';
 
-const HomePage = () => (
-    <div>
-        <Navbar />
-        <div className="hero-section">
-            <div className="hero-header">
-                <img src={SKlogo} alt="SK Logo" className="hero-logo" />
-                <div className="hero-sshee">
-                    <h1>
-                        <span className="hero-title-bold">SANGGUNIANG KABATAAN</span>
-                        <br />
-                        <span className="hero-title-sub">BARANGAY PUTING BATO WEST</span>
-                    </h1>
-                </div>
+const HomePage = () => {
+    const navigate = useNavigate();
+
+    return (
+        <>
+            <Navbar />
+            <div className="homepage-container">
+                <section className="hero-modern">
+                    <span className="badge">SK INSIGHT PLATFORM</span>
+
+                    <div className="hero-image">
+                        <img src={HeroImage} alt="SK Insight Team at Work" />
+                    </div>
+
+                    <div className="hero-info">
+                        <h1 className="main-heading">
+                            Advanced analytics to grow your barangay programs
+                        </h1>
+                        <p className="sub-text">
+                            Empowering the youth through community involvement, transparency, and smart tracking of educational assistance and profiling.
+                        </p>
+                    </div>
+
+                    <div className="buttons">
+                        <button className="btn btn-primary" onClick={() => navigate('/announcements')}>Get Started</button>
+                        <button className="btn btn-secondary">How it works</button>
+                    </div>
+                </section>
             </div>
-        </div>
-    </div>
-);
+        </>
+    );
+};
 
 export default HomePage;
