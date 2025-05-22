@@ -1,6 +1,7 @@
 .profiling-page {
     width: 100vw;
     padding: 0px 20px;
+    min-height: 88vh;
 }
 
 .profiling-container {

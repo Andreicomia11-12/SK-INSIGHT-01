@@ -1,5 +1,5 @@
 .profile-page {
-  min-height: 100vh;
+  min-height: 88vh;
   padding: 5px 20px;
 }
 
@@ -50,9 +50,10 @@
   font-size: 20px;
   font-weight: 600;
   margin: 0px;
+  color: #5c5b5b;
 }
 
-.profile-title{
+.profile-title {
   color: #092957;
 }
 
@@ -62,8 +63,9 @@
   margin: 0px;
 }
 
-.btn-cancel{
-  background-color: #e4edfa;
+.btn-cancel {
+  background-color: #cacfd8;
+  color: rgb(22, 20, 20);
 }
 
 .profile-verification {

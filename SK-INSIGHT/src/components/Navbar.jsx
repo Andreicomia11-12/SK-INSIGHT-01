@@ -22,9 +22,10 @@ const Navbar = () => {
     return (
         <nav className="navbar">
 
-            <div className="navbar-left">
+            <div className="navbar-left"><Link to="/home">
                 <img src={SKlogo} alt="SK Logo" className="navbar-logo" />
-                <span className="navbar-title">SK-INSIGHT</span>
+            </Link>
+                <span className="navbar-title" onClick={() => setMenuOpen(false)}><Link className='navbar-title' to="/home">SK-INSIGHT</Link></span>
             </div>
 
             {/* Center: Hamburger & Links */}
