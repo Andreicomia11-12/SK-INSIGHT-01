@@ -10,7 +10,7 @@ const AdminAnnouncementPage = () => {
   const [announcements, setAnnouncements] = useState([
     { id: 1, time: '2025-01-14 08:45', subject: 'General', title: 'Welcome to the new year!', body: 'Happy New Year to all SK members.' },
   ]);
-  const [form, setForm] = useState({ title: '', time: '', body: '' });
+  const [form, setForm] = useState({ title: '', time: '', body: '', subject: '' });
   const [error, setError] = useState('');
   const navigate = useNavigate();
 
@@ -21,7 +21,7 @@ const AdminAnnouncementPage = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!form.title || !form.time || !form.body) {
+    if (!form.title || !form.time || !form.body || !form.subject) {
       setError('All fields are required.');
       return;
     }
@@ -30,12 +30,12 @@ const AdminAnnouncementPage = () => {
       {
         id: Date.now(),
         time: form.time,
-        subject: 'General', // You can add a subject field if needed
+        subject: form.subject,
         title: form.title,
         body: form.body,
       },
     ]);
-    setForm({ title: '', time: '', body: '' });
+    setForm({ title: '', time: '', body: '', subject: '' });
     setError('');
     setShowModal(false);
   };
@@ -77,6 +77,19 @@ const AdminAnnouncementPage = () => {
             <div className="admin-announcement-modal" onClick={e => e.stopPropagation()}>
               <h3>Create Announcement</h3>
               <form onSubmit={handleSubmit}>
+                <div style={{ marginBottom: '12px' }}>
+                  <label htmlFor="subject">Subject:</label>
+                  <input
+                    type="text"
+                    id="subject"
+                    name="subject"
+                    value={form.subject}
+                    onChange={handleInputChange}
+                    className="admin-announcement-input"
+                    placeholder="Enter announcement subject"
+                    required
+                  />
+                </div>
                 <div style={{ marginBottom: '12px' }}>
                   <label htmlFor="title">Title:</label>
                   <input

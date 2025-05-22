@@ -9,8 +9,9 @@ import {
   Title,
   Tooltip,
   Legend,
+  ArcElement,
 } from 'chart.js';
-import { Bar, Line } from 'react-chartjs-2';
+import { Bar, Line, Doughnut } from 'react-chartjs-2';
 
 // Register ChartJS components
 ChartJS.register(
@@ -21,7 +22,8 @@ ChartJS.register(
   BarElement,
   Title,
   Tooltip,
-  Legend
+  Legend,
+  ArcElement
 );
 
 const youthCategoryColors = [
@@ -47,6 +49,25 @@ const DashboardGraphs = () => {
     Q1: [125, 88, 42, 32],
     Q2: [135, 92, 38, 38],
     Q3: [130, 98, 35, 45],
+  };
+
+  // Donut chart data
+  const genderData = {
+    labels: ['Male', 'Female'],
+    datasets: [{
+      data: [65, 35],
+      backgroundColor: ['#3b82f6', '#ef4444'],
+      borderWidth: 0,
+    }]
+  };
+
+  const ageGroupData = {
+    labels: ['15-17', '18-20', '21-24'],
+    datasets: [{
+      data: [40, 35, 25],
+      backgroundColor: ['#3b82f6', '#22c55e', '#eab308'],
+      borderWidth: 0,
+    }]
   };
 
   const chartOptions = {
@@ -79,6 +100,17 @@ const DashboardGraphs = () => {
     }
   };
 
+  const donutOptions = {
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: {
+      legend: {
+        position: 'right',
+      },
+    },
+    cutout: '70%',
+  };
+
   const createCombinedChartData = (quarter) => ({
     labels: youthCategories,
     datasets: [
@@ -106,7 +138,7 @@ const DashboardGraphs = () => {
   });
 
   const renderCombinedChart = (quarter, idx) => (
-    <div key={quarter} className="quarter-section">
+    <div key={quarter} className="quarter-section" style={{ flex: 1, minWidth: '300px' }}>
       <div className="quarter-label" style={{textAlign: 'center', fontWeight: 600, marginBottom: 8}}>
         {quarter === 'Q1' && 'Quarter 1'}
         {quarter === 'Q2' && 'Quarter 2'}
@@ -114,7 +146,7 @@ const DashboardGraphs = () => {
       </div>
       <div className="charts-container">
         <div className="chart-wrapper">
-          <div style={{ height: '300px', position: 'relative' }}>
+          <div style={{ height: '200px', position: 'relative' }}>
             <Bar
               data={createCombinedChartData(quarter)}
               options={chartOptions}
@@ -126,36 +158,42 @@ const DashboardGraphs = () => {
   );
 
   return (
-    <div className="youth-classification-card">
-      <div className="youth-classification-header-row" style={{display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '1rem', marginBottom: 18}}>
-  <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', flexWrap: 'wrap' }}>
-    <h2 className="youth-classification-title" style={{ marginBottom: 0 }}>Youth Classification</h2>
-    <div className="legend-row" style={{ display: 'flex', flexWrap: 'wrap' }}>
-      {youthCategories.map((cat, idx) => (
-        <span key={cat} style={{
-          display: 'inline-flex',
-          alignItems: 'center',
-          marginRight: 12,
-          fontWeight: 500,
-          fontSize: 14
-        }}>
-          <span style={{
-            display: 'inline-block',
-            width: 14,
-            height: 14,
-            borderRadius: 3,
-            background: youthCategoryColors[idx],
-            marginRight: 6,
-            border: '1px solid #ccc'
-          }}></span>
-          {cat}
-        </span>
-      ))}
-    </div>
-  </div>
-</div>
-      <div className="quarters-row">
+    <div className="youth-classification-card dashboard-graphs-container">
+      <div className="dashboard-graphs-header">
+        <div className="dashboard-graphs-title-container">
+          <h2 className="youth-classification-title dashboard-graphs-title">Youth Classification</h2>
+          <div className="dashboard-graphs-legend">
+            {youthCategories.map((cat, idx) => (
+              <span key={cat} className="dashboard-graphs-legend-item">
+                <span 
+                  className="dashboard-graphs-legend-indicator"
+                  style={{ background: youthCategoryColors[idx] }}
+                ></span>
+                {cat}
+              </span>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      <div className="dashboard-graphs-quarters">
         {['Q1', 'Q2', 'Q3'].map(renderCombinedChart)}
+      </div>
+
+      {/* Donut Charts Section */}
+      <div className="dashboard-graphs-donut-container">
+        <div className="dashboard-graphs-donut-card">
+          <h3 className="dashboard-graphs-donut-title">Gender Distribution</h3>
+          <div className="dashboard-graphs-donut-chart">
+            <Doughnut data={genderData} options={donutOptions} />
+          </div>
+        </div>
+        <div className="dashboard-graphs-donut-card">
+          <h3 className="dashboard-graphs-donut-title">Age Group Distribution</h3>
+          <div className="dashboard-graphs-donut-chart">
+            <Doughnut data={ageGroupData} options={donutOptions} />
+          </div>
+        </div>
       </div>
     </div>
   );
