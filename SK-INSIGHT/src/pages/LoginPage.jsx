@@ -24,7 +24,7 @@ const LoginPage = () => {
             <div className="login-right">
                 <form className="login-form" onSubmit={handleSubmit}>
                     <h2>Sign In</h2>
-                    <div className="input-group">
+                    <div className="input-group1">
                         <FaUser className="input-icon" />
                         <input
                             type="text"
@@ -34,7 +34,7 @@ const LoginPage = () => {
                             required
                         />
                     </div>
-                    <div className="input-group">
+                    <div className="input-group1">
                         <FaLock className="input-icon" />
                         <input
                             type={showPassword ? "text" : "password"}
@@ -44,7 +44,7 @@ const LoginPage = () => {
                             required
                         />
                         <span
-                            className="input-icon eye-icon"
+                            className="input-icon eye-icon1"
                             onClick={() => setShowPassword((prev) => !prev)}
                             style={{ cursor: 'pointer' }}
                         >
