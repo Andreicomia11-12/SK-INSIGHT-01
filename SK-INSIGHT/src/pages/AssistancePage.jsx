@@ -20,8 +20,9 @@ const AssistancePage = () => {
     };
 
     return (
+    <><Navbar />
         <div className="assistance-page">
-            <Navbar />
+            
             <div className="assistance-container">
                 <h2>Educational Assistance Form</h2>
 
@@ -109,6 +110,7 @@ const AssistancePage = () => {
                 </form>
             </div>
         </div>
+        </>
     );
 };
 

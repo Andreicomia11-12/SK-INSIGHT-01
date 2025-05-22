@@ -1,11 +1,11 @@
 .profiling-page {
     width: 100vw;
-    padding: 1rem;
+    padding: 0px 20px;
 }
 
 .profiling-container {
     max-width: 800px;
-    margin: 2rem auto 1rem;
+    margin: 1rem auto 1rem;
     padding: 1.5rem;
     background: #f9fbfc;
     border-radius: 10px;

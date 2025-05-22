@@ -8,9 +8,9 @@ import AdminLogin from './pages/adminLogin';
 import Dashboard from './pages/dashboard';
 import KKProfile from './pages/kkProfile';
 import AssistancePage from './pages/AssistancePage';
-
+import ProfilePage from './pages/ProfilePage';
 import ProfilingPage from './pages/ProfilingPage';
-
+import AnnouncementPage from './pages/AnnouncementPage';
 function App() {
   return (
     <Router>
@@ -20,6 +20,9 @@ function App() {
         <Route path="/home" element={<HomePage />} />
         <Route path="/profiling" element={<ProfilingPage />} />
         <Route path="/assistance" element={<AssistancePage />} /> 
+        <Route path="/profile" element={<ProfilePage />} />
+        <Route path="/announcements" element={<AnnouncementPage />} />
+
 
         <Route path="/admin" element={<AdminLogin />} />
         <Route path="/dashboard" element={<Dashboard />} />
@@ -32,3 +35,4 @@ function App() {
 }
 
 export default App;
+

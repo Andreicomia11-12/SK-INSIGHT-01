@@ -4,8 +4,9 @@ import Navbar from '../components/Navbar';
 
 const ProfilingPage = () => {
     return (
+        <>
+        <Navbar />
         <div className="profiling-page">
-            <Navbar />
             <div className="profiling-container">
                 <h2>Profiling Form</h2>
                 <form className="profiling-form">
@@ -61,6 +62,7 @@ const ProfilingPage = () => {
                 </form>
             </div>
         </div>
+        </>
     );
 };
 
